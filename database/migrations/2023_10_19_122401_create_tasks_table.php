@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('task_name');
             $table->string('deskripsi')->nullable();
-            $table->string('status');
+            $table->tinyInteger('status')->default('0');
             $table->text('gambar_task');
             $table->timestamps();
         });

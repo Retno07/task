@@ -126,4 +126,15 @@ class ListTaskController extends Controller
 
         return redirect()->route('list-task.index');
     }
+
+    public function selesai_task(Request $request, $id)
+    {
+        $items = DB::table('tasks')
+            ->where('id',$id)
+            ->update(['status' => 1]);
+
+        return redirect()->route('list-task.index',[
+            'items' => $items
+        ]);
+    }
 }

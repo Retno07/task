@@ -27,7 +27,7 @@ class ListTaskRequest extends FormRequest
         'user_id' =>'required',
         'task_name' =>'required|max:225',
         'deskripsi' =>'string|max:225|nullable',
-        'status' =>'required|max:225',
+        'status' =>'nullable',
         'gambar_task' =>'mimes:jpeg,jpg,png|required|max:10000',
         ];
     }   

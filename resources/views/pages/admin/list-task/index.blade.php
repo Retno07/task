@@ -29,9 +29,9 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Status</th>
                             <th>Nama Task</th>
                             <th>Deskripsi</th>
-                            <th>Status</th>
                             <th>Nama User</th>
                             <th>Gambar Task</th>
                             <th>Action</th>
@@ -41,19 +41,27 @@
                         @forelse ($items as $item)
                             <tr>
                                 <td> {{ ++$i }} </td>
+                                @if($item->status == 0)
+                                    <td class="text-danger">
+                                            On Proses
+                                    </td>
+                                @else
+                                     <td class="text-success">
+                                            Selesai
+                                    </td>
+                                @endif
                                 <td>{{ $item->task_name }}</td>
                                 <td>{{ $item->deskripsi }}</td>
-                                <td>{{ $item->status }}</td>
                                 <td>{{ $item->user->name }}</td>
                                 <td>
                                     <img src="{{ Storage::url($item->gambar_task) }}" alt="" style="width: 200px" class="img-thumbnail">
                                 </td>
-                               <th width="120px">
+                               <th width="160px">
                                     <a href="{{ route('list-task.edit', $item->id) }}" class="btn btn-info btn-sm">
                                         <i class="fa fa-pencil-alt"></i>
                                         <span class="text">Edit</span>
                                     </a>
-                                    <form action="{{ route('list-task.destroy', $item->user_id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('list-task.destroy', $item->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger btn-sm">
@@ -61,6 +69,12 @@
                                             <span class="text">hapus</span>
                                         </button>
                                     </form>
+                                    @if($item->status == 0)
+                                    <a href="{{ route('selesai_task', $item->id) }}" class="btn btn-success btn-sm">
+                                        <i class="fa fa-check"></i>
+                                        <span class="text">Selesaikan</span>
+                                    </a>
+                                    @endif
                                 </th>
                             </tr>
                         @empty

@@ -32,10 +32,6 @@
                     <label for="deskripsi">Deskripsi</label>
                     <input type="text" class="form-control" name="deskripsi" placeholder="Deskripsi" value="{{ $item->deskripsi }}">
                 </div>
-                <div class="form group">
-                    <label for="status">Status</label>
-                    <input type="text" class="form-control" name="status" placeholder="Status" value="{{ $item->status }}">
-                </div>
                 <div class="form-group">
                     <label for="title">Nama User</label>
                     <select name="user_id" required class="form-control" id="user_id">

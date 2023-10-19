@@ -25,6 +25,8 @@ Route::prefix('office')
     ->group(function() {
         Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
         ->name('dashboard');
+        Route::get('/selesai_task/{id}', [App\Http\Controllers\Admin\ListTaskController::class, 'selesai_task'])
+        ->name('selesai_task');
 
         Route::resource('list-task', '\App\Http\Controllers\Admin\ListTaskController');
        

@@ -31,10 +31,6 @@
                     <label for="deskripsi">Deskripsi</label>
                     <input type="text" class="form-control" name="deskripsi" placeholder="" value="{{ old('deskripsi') }}">
                 </div>
-                <div class="form group">
-                    <label for="status">Status</label> 
-                    <input type="text" class="form-control" name="status" placeholder="" value="{{ old('status') }}">
-                </div>
                 <div class="form-group">
                     <label for="gambar_task">Gambar Task</label>
                     <input type="file" class="form-control" name="gambar_task" placeholder="gambar_task" >
