@@ -11,14 +11,18 @@ class ListTask extends Model
     use HasFactory;
     // use softDeletes;
 
-    protected $primaryKey = 'user_id';
+    protected $primaryKey = 'id';
     public $table = "tasks";
 
     protected $fillable = [
-        'name','deskripsi','status'
+        'user_id','name','deskripsi','status'
     ];
 
     protected $hidden = [
 
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

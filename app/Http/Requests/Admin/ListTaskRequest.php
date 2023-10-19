@@ -24,6 +24,7 @@ class ListTaskRequest extends FormRequest
     public function rules()
     {
         return [
+        'user_id' =>'required',
         'name' =>'required|max:225',
         'deskripsi' =>'string|max:225|nullable',
         'status' =>'required|max:225',

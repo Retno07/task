@@ -35,6 +35,17 @@
                     <label for="status">Status</label> 
                     <input type="text" class="form-control" name="status" placeholder="" value="{{ old('status') }}">
                 </div>
+                <div class="form-group">
+                    <label for="title">User ID</label>
+                    <select name="user_id" id="user_id" required class="form-control">
+                        <option value="">Pilih User ID</option>
+                        @foreach($users as $user)
+                            <option value="{{ $user->id}}">
+                                {{ $user->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
                 <br>
                 <button type="submit" class="btn btn-primary btn-block">
                     Simpan

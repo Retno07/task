@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ListTaskRequest;
 use App\Models\ListTask;
+use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -19,10 +21,10 @@ class ListTaskController extends Controller
     public function index(Request $request)
     {
         $pagination = 5;
-        if($request->has('search')){
-            $items = ListTask::where('user_id','LIKE','%' .$request->search.'%')->simplePaginate($pagination);
+        if (auth()->user()->name != 'admin') {
+            $items = ListTask::with(['user'])->where('user_id', Auth::user()->id)->where('user_id','LIKE','%' .$request->search.'%')->simplePaginate($pagination);
         }else {
-            $items = ListTask::simplePaginate($pagination);
+            $items = ListTask::where('user_id','LIKE','%' .$request->search.'%')->simplePaginate($pagination);
         }
 
         return view('pages.admin.list-task.index',[
@@ -37,9 +39,11 @@ class ListTaskController extends Controller
      */
     public function create()
     {
+        $users = User::all();
         $task = ListTask::all();
         return view('pages.admin.list-task.create',[
-            'task' => $task
+            'task' => $task,
+            'users'=> $users,
         ]);
     }
 
