@@ -24,8 +24,8 @@
             <form action="{{ route('list-task.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form group">
-                    <label for="name">Nama Task</label>
-                    <input type="text" class="form-control" name="name" placeholder="" value="{{ old('name') }}">
+                    <label for="task_name">Nama Task</label>
+                    <input type="text" class="form-control" name="task_name" placeholder="" value="{{ old('task_name') }}">
                 </div>
                 <div class="form group">
                     <label for="deskripsi">Deskripsi</label>

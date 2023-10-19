@@ -15,7 +15,7 @@ class ListTask extends Model
     public $table = "tasks";
 
     protected $fillable = [
-        'user_id','name','deskripsi','status','gambar_task'
+        'user_id','task_name','deskripsi','status','gambar_task'
     ];
 
     protected $hidden = [

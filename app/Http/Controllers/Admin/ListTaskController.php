@@ -81,12 +81,14 @@ class ListTaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($user_id)
+    public function edit($id)
     {
-        $item = ListTask::findOrFail($user_id);
+        $item = ListTask::findOrFail($id);
+        $user = User::all();
 
         return view('pages.admin.list-task.edit',[
-            'item' => $item
+            'item' => $item,
+            'user' => $user
         ]);
     }
 
@@ -97,10 +99,14 @@ class ListTaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ListTaskRequest $request, $user_id)
+    public function update(ListTaskRequest $request, $id)
     {
         $data = $request->all();
-        $item = ListTask::findOrFail($user_id);
+        $item = ListTask::findOrFail($id);
+        $data['gambar_task'] = $request->file('gambar_task')->store(
+            'assets/gallery', 'public'
+        );
+
 
         $item->update($data);
 

@@ -32,6 +32,7 @@
                             <th>Nama Task</th>
                             <th>Deskripsi</th>
                             <th>Status</th>
+                            <th>Nama User</th>
                             <th>Gambar Task</th>
                             <th>Action</th>
                         </tr>
@@ -40,14 +41,15 @@
                         @forelse ($items as $item)
                             <tr>
                                 <td> {{ ++$i }} </td>
-                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->task_name }}</td>
                                 <td>{{ $item->deskripsi }}</td>
                                 <td>{{ $item->status }}</td>
+                                <td>{{ $item->user->name }}</td>
                                 <td>
                                     <img src="{{ Storage::url($item->gambar_task) }}" alt="" style="width: 200px" class="img-thumbnail">
                                 </td>
                                <th width="120px">
-                                    <a href="{{ route('list-task.edit', $item->user_id) }}" class="btn btn-info btn-sm">
+                                    <a href="{{ route('list-task.edit', $item->id) }}" class="btn btn-info btn-sm">
                                         <i class="fa fa-pencil-alt"></i>
                                         <span class="text">Edit</span>
                                     </a>

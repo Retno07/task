@@ -21,12 +21,12 @@
 
     <div class="card shadow">
         <div class="card-body">
-            <form action="{{ route('list-task.update', $item->user_id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('list-task.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="form group">
-                    <label for="name">Nama Task</label>
-                    <input type="text" class="form-control" name="name" placeholder="Nama Task" value="{{ $item->name }}">
+                    <label for="task_name">Nama Task</label>
+                    <input type="text" class="form-control" name="task_name" placeholder="Nama Task" value="{{ $item->task_name }}">
                 </div>
                 <div class="form group">
                     <label for="deskripsi">Deskripsi</label>
@@ -35,6 +35,19 @@
                 <div class="form group">
                     <label for="status">Status</label>
                     <input type="text" class="form-control" name="status" placeholder="Status" value="{{ $item->status }}">
+                </div>
+                <div class="form-group">
+                    <label for="title">Nama User</label>
+                    <select name="user_id" required class="form-control" id="user_id">
+                        <option value="">Pilih User</option>
+                        @foreach($user as $usr)
+                            <option value="{{ $usr->id }}" {{ $usr->id == $item->user_id ? 'selected' : '' }}>{{ $usr->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gambar_task">Gambar Task</label>
+                    <input type="file" class="form-control" name="gambar_task" placeholder="gambar_task" value="{{ $item->gambar_task }}">
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary btn-block">
