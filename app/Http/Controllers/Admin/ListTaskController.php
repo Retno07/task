@@ -56,6 +56,10 @@ class ListTaskController extends Controller
     public function store(ListTaskRequest $request)
     {
         $data = $request->all();
+        $data['gambar_task'] = $request->file('gambar_task')->store(
+            'assets/gallery', 'public'
+        );
+
         ListTask::create($data);
         return redirect()->route('list-task.index');
     }

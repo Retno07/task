@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('deskripsi')->nullable();
             $table->string('status');
+            $table->text('gambar_task');
             $table->timestamps();
         });
     }

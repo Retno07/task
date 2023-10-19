@@ -36,6 +36,10 @@
                     <input type="text" class="form-control" name="status" placeholder="" value="{{ old('status') }}">
                 </div>
                 <div class="form-group">
+                    <label for="gambar_task">Gambar Task</label>
+                    <input type="file" class="form-control" name="gambar_task" placeholder="gambar_task" >
+                </div>
+                <div class="form-group">
                     <label for="title">User ID</label>
                     <select name="user_id" id="user_id" required class="form-control">
                         <option value="">Pilih User ID</option>
