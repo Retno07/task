@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash; 
 
 class UserTableSeeder extends Seeder
 {
@@ -14,5 +15,11 @@ class UserTableSeeder extends Seeder
     {
         // factory(\App\User::class, 5)->create();
         \App\Models\User::factory()->count(5)->create(); 
+
+        \App\Models\User::create([
+            'name'=>'Admin',
+            'email'=>'admin@gmail.com',
+            'password'=>Hash::make('adminadmin'),
+        ]);
     }
 }
